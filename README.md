@@ -23,6 +23,10 @@ It is an implementation of the classical FourRooms environemnt from the original
 
 We want the agent to be able to move up, down, left and right. However, in the MiniGrid's repo the agent can turn while satying in the same location. We want to avoid that as we want to be able to print insightful plots such as
 
+<p align="center">
+<img src="/figures/four-rooms-visuals.png" width=380>
+</p>
+
 where a state-dependent function is evaluated and plotteed for each location. This is very useful for debugging.
 
 # How to use?
@@ -37,10 +41,10 @@ class Minigrid2Image(gym.ObservationWrapper):
         self.observation_space = env.observation_space.spaces['image']
 
     def observation(self, observation):
-        return observation['image'][:,:,0:1]
+        return observation['image']
 
 from gym_minigrid import wrappers as wrappers
-env = wrappers.FullyObsWrapper(gym.make('MiniGrid-FourRooms, max_steps=100))
+env = wrappers.FullyObsWrapper(gym.make('MiniGrid-FourRooms-v0', max_steps=100))
 env = Minigrid2Image(env)
 ```
 
