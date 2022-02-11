@@ -15,16 +15,33 @@ Requirements:
 - NumPy
 - Matplotlib (optional, only needed for display)
 
-Please use this bibtex if you want to cite MiniGrid's repository in your publications:
+# Why this repo?
+
+It is an implementation of the classical FourRooms environemnt from the original options [paper](https://www.cs.mcgill.ca/~dprecup/publications/SPS-aij.pdf). However, here we do not assume that the features are tabular, but rather an image that can be passed through a neural network.
+
+# Why modify MiniGrid's repo?
+
+We want the agent to be able to move up, down, left and right. However, in the MiniGrid's repo the agent can turn while satying in the same location. We want to avoid that as we want to be able to print insightful plots such as
+
+where a state-dependent function is evaluated and plotteed for each location. This is very useful for debugging.
+
+# How to use?
 
 ```
-@misc{gym_minigrid,
-  author = {Chevalier-Boisvert, Maxime and Willems, Lucas and Pal, Suman},
-  title = {Minimalistic Gridworld Environment for OpenAI Gym},
-  year = {2018},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/maximecb/gym-minigrid}},
-}
+import gym
+import gym_minigrid
+
+class Minigrid2Image(gym.ObservationWrapper):
+    def __init__(self, env):
+        gym.ObservationWrapper.__init__(self, env)
+        self.observation_space = env.observation_space.spaces['image']
+
+    def observation(self, observation):
+        return observation['image'][:,:,0:1]
+
+from gym_minigrid import wrappers as wrappers
+env = wrappers.FullyObsWrapper(gym.make('MiniGrid-FourRooms, max_steps=100))
+env = Minigrid2Image(env)
 ```
+
 
