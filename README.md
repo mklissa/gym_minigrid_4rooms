@@ -21,7 +21,7 @@ It is an implementation of the classical FourRooms environemnt from the original
 
 # Why modify MiniGrid's repo?
 
-We want the agent to be able to move up, down, left and right. However, in the MiniGrid's repo the agent can turn while satying in the same location. We want to avoid that as we want to be able to print insightful plots such as
+We want the agent to be able to move up, down, left and right. However, in the MiniGrid's repo the agent can turn while remaining in the same location. We want to avoid that as to be able to print insightful plots such as
 
 <p align="center">
 <img src="/figures/four-rooms-visuals.png" width=380>
