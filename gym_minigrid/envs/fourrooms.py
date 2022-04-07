@@ -161,6 +161,7 @@ class FourRoomsTransferEnv(MiniGridEnv):
         self.mission = 'Reach the goal'
 
     def step(self, action):
+        import pdb;pdb.set_trace()
         obs, reward, done, info = MiniGridEnv.step(self, action)
         return obs, reward, done, info
 
