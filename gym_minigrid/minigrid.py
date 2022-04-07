@@ -1161,6 +1161,10 @@ class MiniGridEnv(gym.Env):
         reward = 0
         done = False
 
+
+        # if np.random.rand() < 0.1:
+        #     action = np.random.randint(self.action_space.n)
+
         # Get the position in front of the agent
         fwd_pos = self.front_pos
         back_pos = self.back_pos
