@@ -28,7 +28,7 @@ def reset():
 
 def step(action):
     obs, reward, done, info = env.step(action)
-    print(env.agent_pos.dtype)
+    print(env.agent_pos)
     print(obs['image'][:,:,0].T) # transpose for easier visuals
     print('step=%s, reward=%.2f' % (env.step_count, reward))
 
